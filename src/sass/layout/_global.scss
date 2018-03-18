@@ -382,32 +382,7 @@ align-self: flex-end;
 
 // swiper
 
-.swiper__l{
-    display: none;
-    @include bp-m {
-        display: block;
-    }
-}
 
-
-.swiper__m{
-    display: none;
-
-    @include bp-sm {
-        display:block;
-    }
-
-    @include bp-m {
-        display: none;
-    }
-}
-
-.swiper__s{
-    display: block;
-    @include bp-sm {
-        display: none;
-    }
-}
 
 
 
