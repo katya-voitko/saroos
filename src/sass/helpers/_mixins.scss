@@ -1,0 +1,125 @@
+@mixin transition($duree : .3s) {
+	transition:$duree all ease-in-out;
+}
+
+@mixin transition2{
+	transition:cubic-bezier(.03,1,.61,.41);
+}
+
+
+// ▬▬▬▬ B A S I C    M I X I N S ▬▬▬▬
+
+@mixin columns($divider : 2) {
+  width: calc(100% / #{$divider});
+}
+
+// ▬▬▬▬ P O S I T I O N I N G ▬▬▬▬
+
+@mixin posa($top:50%, $left:50%, $x:-50%, $y:-50%) {
+  position: absolute;
+  top: $top; left: $left;
+  transform: translate($x, $y);
+}
+
+@mixin flex($d:'row', $w:'nowrap', $j-c:'flex-start', $a-i:'stretch') {
+  display: flex;
+  flex-flow: $d $w;
+  justify-content: $j-c;
+	align-items: $a-i;
+}
+
+// ▬▬▬▬ F O N T   M I X I N S ▬▬▬▬
+
+
+@mixin myfont($ff:'arial', $fz:14px) {
+  font-family: $ff;
+  font-size: $fz;
+  // font-weight: $fw;
+  // font-style: $fs;
+}
+
+// ▬▬▬▬ E X T R A ▬▬▬▬
+
+@mixin inclinaison ($pos-h: 'right', $pos-v: 'bottom', $c: $color-bg) {
+    position: absolute;
+    #{$pos-v}: 0; #{$pos-h}: 0;
+    height: 0; width: 0;
+    border: 0px solid transparent;
+    border-#{$pos-h}-width: 100vW;
+    border-#{$pos-v}: 50px solid $c;
+    @media screen and (min-width: 600px) {
+        border-#{$pos-v}: 75px solid $c;
+    }
+    @media screen and (min-width: 1024px) {
+        border-#{$pos-v}: 100px solid $c;
+    }
+}
+
+// NOT USED ANYMORE MIXINS
+// MIXIN DE SAM
+// @mixin myFontStyle($property-stack) {
+//    @each $property, $value in $property-stack {
+//      #{$property}: unquote($value);
+//    }
+// }
+
+// ▬▬▬▬ Set a rem font size with pixel fallback ▬▬▬▬
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+//
+// usage:
+// p {
+//   @include font-size(14px)
+// }
+
+//
+// ▬▬▬▬  Breakpoints ▬▬▬▬
+@mixin bp-xs{
+  @media screen and (min-width: 300px) {
+    @content;
+  }
+}
+
+@mixin bp-s{
+  @media screen and (min-width: 480px) {
+    @content;
+  }
+}
+
+@mixin bp-sm{
+  @media screen and (min-width: 650px) {
+    @content;
+  }
+}
+
+@mixin bp-m {
+  @media screen and (min-width: 860px) {
+    @content;
+  }
+}
+
+@mixin bp-l{
+  @media  screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin bp-xl{
+	 @media screen and (min-width: 1224px) {
+	  @content;
+	}
+}
+
+@mixin bp-xxl{
+		@media screen and (min-width: 1824px) {
+		 @content;
+	}
+}
