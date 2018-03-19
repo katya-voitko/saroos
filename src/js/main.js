@@ -1,10 +1,126 @@
 
-
 $(document).ready(function() {
-  var element = document.getElementById('video');
-  element.muted = true;
 
 
+  window.onscroll=function(ev){
+    easyReveal();
+  };
+
+  function elementInViewport(el) {
+    var top = el.offsetTop;
+    var left = el.offsetLeft;
+    var width = el.offsetWidth;
+    var height = el.offsetHeight;
+
+    while(el.offsetParent) {
+      el = el.offsetParent;
+      top += el.offsetTop;
+      left += el.offsetLeft;
+    }
+
+    return (
+      top >= window.pageYOffset &&
+      left >= window.pageXOffset &&
+      (top + height) <= (window.pageYOffset + window.innerHeight) &&
+      (left + width) <= (window.pageXOffset + window.innerWidth)
+    );
+  }
+
+
+  function easyReveal(){
+
+
+
+
+
+
+    var easyItem4=  document.getElementsByClassName("easy4");
+
+
+       for(var z=0; z<easyItem4.length; z++){
+           if(elementInViewport(easyItem4[z])){
+             $(easyItem3[y]).animate({
+               opacity: 1,
+               bottom: 0
+
+
+
+
+     }, 400 );
+    }
+
+
+    }
+
+
+
+
+
+
+
+        var easyItem3=  document.getElementsByClassName("easy3");
+
+
+           for(var y=0; y<easyItem3.length; y++){
+               if(elementInViewport(easyItem3[y])){
+                 $(easyItem3[y]).animate({
+           width: 100 +"%",
+
+
+
+
+         }, 600 );
+        }
+
+
+        }
+
+
+
+
+    var easyItem2=  document.getElementsByClassName("easy2");
+
+
+       for(var x=0; x<easyItem2.length; x++){
+           if(elementInViewport(easyItem2[x])){
+             $(easyItem2[x]).animate({
+       opacity: 1,
+       bottom: 0
+
+
+
+     }, 400 );
+    }
+
+
+    }
+
+
+
+
+
+
+
+
+   var easyItem=  document.getElementsByClassName("easy");
+   console.log(easyItem);
+
+      for(var i=0; i<easyItem.length; i++){
+          if(elementInViewport(easyItem[i])){
+            $(easyItem[i]).animate({
+
+        opacity: "0.6",
+        bottom: 0
+
+
+
+    }, 600 );
+  }
+
+
+  }
+
+    }
 
 
 
@@ -22,33 +138,13 @@ $(document).ready(function() {
         var number=$(window).scrollTop()/windowHeight;
         //on augmente l'opacité overlay
         $menu.css({
-          background: 'rgba(33, 33, 33,'+number+')'
+          background: 'rgba(0, 0, 0,'+number+')'
         });
         console.log("done");
       });
 
 
 
-        function easyReveal(){
-
-         var easyItem=  document.getElementsByClassName("easy");
-         console.log(easyItem);
-
-            for(var i=0; i<easyItem.length; i++){
-                if(elementInViewport(easyItem[i])){
-                  $(easyItem[i]).animate({
-            opacity: 1,
-            bottom: 0
-
-
-
-          }, 500 );
-        }
-
-
-        }
-
-          }
 
 
 var clicked= false;
