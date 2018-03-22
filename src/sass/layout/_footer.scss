@@ -1,4 +1,6 @@
-
+footer{
+    z-index: 500;
+}
 
 .footer__all{
   background-color: #000;
@@ -75,6 +77,9 @@ padding-top: 50px;
 .footer__secondaryMenu{
   margin: 0 auto;
   padding-bottom: 5px;
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
 
   border-bottom: 13px solid transparentize($electric, 0.2);
 
@@ -83,14 +88,15 @@ padding-top: 50px;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.7px;
-    padding-right: 5px;
+
     @include transition;
+
 
 
     &:hover{
       color: #fff;
 
-      transform: translateY(-7%);
+      transform: translateY(-12%);
 
       @include transition;
     }
@@ -318,10 +324,16 @@ margin-left:0;
   cursor: pointer;
   text-align: center;
 
+  @include transition;
+
+
 
   &:hover{
-    text-decoration: none;
-    color: $marrakesh;
+    color: #fff;
+
+    transform: translateY(-12%);
+
+    @include transition;
   }
 
 

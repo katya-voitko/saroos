@@ -96,6 +96,7 @@ padding:0 7px;
 header{
     height: 100vh;
     width: 100%;
+        background-attachment: fixed;
 }
 .mobile__header{
  height: 100%;
@@ -331,6 +332,7 @@ padding: 0 5px;
   height: 100%;
   position: absolute;
   z-index: 100;
+  top:0;
 }
 .desktop__header{
     display: none;
@@ -340,7 +342,7 @@ padding: 0 5px;
     background-image:url(../img/hero.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    background-size: 70%;
+    background-size: 75%;
     background-attachment: fixed;
     @include bp-m{
         display: block;
@@ -349,7 +351,7 @@ padding: 0 5px;
 
     @include bp-l{
 
-        background-position: 50% 75%;
+        background-position: 50% 60%;
     }
 
     @include bp-xl{
@@ -361,6 +363,7 @@ padding: 0 5px;
 
 
     background-size: 60%;
+    background-position: 50% 80%;
 }
 }
 
@@ -370,9 +373,13 @@ padding: 0 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 20px;
     position: relative;
     z-index: 700;
+    @include bp-xxl{
+
+        padding-top: 30px;
+    }
 
 }
 

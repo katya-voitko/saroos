@@ -5,7 +5,7 @@
 
 .easy2{
   opacity: 0;
-  position: relative;
+
   bottom:-20px;
 
 }
@@ -18,7 +18,7 @@
 .easy4{
   opacity: 0;
   position: relative;
-  bottom:-20px;
+  bottom:-40px;
 
 }
 
@@ -134,11 +134,53 @@
 // ⚡️⚡️⚡️MAIN⚡️⚡️⚡️
 
 
+// spy
+
+.spyMenu{
+
+position: fixed;
+right:7%;
+top:50%;
+transform: translateY(-50%);
+
+display: none;
+z-index: 100;
+
+@include bp-m{
+    opacity: 0;
+
+display: flex;
+    flex-flow:column wrap;
+}
+
+
+@include bp-xl{
+    right:10%;
+}
+
+@include bp-xxl{
+    right:17%;
+}
+
+}
+.spyMenu__item{
+    width: 1ch;
+    word-wrap: break-word;
+    color: #fff;
+    padding-bottom: 25px;
+
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+
+}
+
 // ☄️about☄️
 .about{
     background: url(../img/about.png) right no-repeat;
     background-size: cover;
     height: 100%;
+    min-height: 100vh;
     @include bp-sm{
       background-position: left;
 
@@ -219,14 +261,14 @@
 
 
 .about__textBlock{
-    padding-top: 120px;
+    padding-top: 150px;
     padding-bottom: 100px;
     @include bp-l{
         display: flex;
         flex-flow: column wrap;
         align-items: flex-start;
         padding-bottom: 120px;
-        padding-top: 150px;
+        padding-top:20px;
 
     }
 }
@@ -245,25 +287,27 @@
 // ⭐️news⭐️
 
 .news{
+    min-height: 100vh;
+  padding-top: 70px;
     background-color:$dust;
 
     background-image:url(../img/asfalt-dark.png);
     background-repeat: repeat;
-    height:1500px;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
-    @include bp-s{
-        max-height:1200px;
-    }
+
 
     @include bp-sm{
         max-height:1400px;
+
     }
 
     @include bp-m{
         height:100vh;
+          padding-top: 0;
     }
 
 }
@@ -303,13 +347,20 @@ top:0;
 }
 
 #myProgress {
-    width: 100%;
+  position: relative;
+
     background-color: transparent;
+    overflow: hidden;
+
+    @include bp-l{
+        width: 120%;
+    }
 }
 #myBar {
 
     height: 13px;
     margin-top: 20px;
+    width: 0;
     background-color: transparentize($electric, 0.2);
 }
 .news__headindsBlock{
@@ -321,19 +372,21 @@ top:0;
 
 
   padding-bottom: 30px;
+    padding-left: 40px;
 
-  margin-left: 20px;
 
-  @include bp-s{
-     margin-left: 40px;
-  }
-  @include bp-sm{
-      margin-left: 50px;
-  }
+
 
   @include bp-m{
       width: 55%;
 
+
+
+
+  }
+
+  h3{
+    text-transform: uppercase;
   }
 }
 .news__textBlock{
@@ -342,14 +395,11 @@ top:0;
     padding-top: 30px;
     width:100%;
 
-    padding:  20px;
+  padding-left: 40px;
+  padding-right: 40px;
 
-    @include bp-s{
-        padding:40px;
-    }
-    @include bp-sm{
-        padding: 40px 50px;
-    }
+
+
 
     @include bp-m{
         width: 50%;
@@ -359,13 +409,22 @@ top:0;
 
 
 }
+
+.news__date {
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0.5px;
+    line-height: 1.8rem;
+}
 .news__photo{
 
     margin-top: 50px;
-    background: #fff;
+    background: url(../img/record.jpg) no-repeat center;
+    background-size: cover;
+    min-height:500px;
+
 
     width: 100%;
-    height:70%;
+
 
 
     @include bp-m{
@@ -379,6 +438,7 @@ top:0;
 
 
 }
+
 
 .news__title{
     font-size: 2rem;
@@ -398,6 +458,7 @@ align-self: flex-end;
 
 .gallery{
   background: #000;
+
 
   bp-m{
     min-height: 100vh;
@@ -450,9 +511,14 @@ align-self: flex-end;
     margin-bottom: 0px;
     margin-left: auto;
     display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 .video{
-    object-fit: auto;
+    @include posa;
+    height: 110%;
 }
 
 
@@ -473,9 +539,14 @@ align-self: flex-end;
 .records__wrapper{
     display: flex;
     flex-flow: row wrap;
-    padding: 70px 0;
+    padding-top:70px;
+    padding-bottom: 100px;
     justify-content: space-between;
     align-items: center;
+
+    @include bp-xl{
+            padding-bottom: 250px;
+    }
 
 
 
@@ -488,7 +559,7 @@ align-self: flex-end;
     display: block;
     display: flex;
     flex-flow: column nowrap;
-    padding: 20px 0;
+    padding: 40px 0;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -505,29 +576,33 @@ align-self: flex-end;
 
     }
 
-    @include bp-xl{
+    @include bp-l{
 
         width: 33%;
-        padding: 30px 0;
+        padding: 45px 0;
         justify-content: flex-end;
 
 
     }
+    @include bp-xl{
+        padding: 60px 0;
+    }
+
 
 
 
 }
 
 .singleRecord__img{
-    width: 220px;
-    height:220px;
+    width: 250px;
+    height:250px;
 
         box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.11);
 
         transition: 0.3s;
 
         &:hover{
-          box-shadow: 5px 10px 10px -2px rgba(0, 0, 0, 0.19  );
+          box-shadow: 5px 6px 5px -2px rgba(0, 0, 0, 0.4  );
         top:49%;
         }
 
@@ -539,8 +614,8 @@ align-self: flex-end;
     }
 
     @include bp-sm{
-        width: 300px;
-        height:300px;
+        width: 350px;
+        height:350px;
     }
 
 
@@ -560,7 +635,8 @@ align-self: flex-end;
     text-transform: uppercase;
     color:#000;
     font-size:1rem;
-    padding: 10px 0;
+    padding:  10px 0;
+
 }
 
 
@@ -740,6 +816,135 @@ width: 30%;
         border-color: $marrakesh;
         color: $marrakesh;
         @include transition;
+    }
+
+}
+
+
+
+// 🎧 single record 🎧:
+
+
+
+.singleRecord{
+
+  margin: 0 auto;
+  background-image:url(../img/asfalt-dark.png);
+  background-repeat: repeat;
+  background-color: $dust;
+  padding:70px 0;
+  min-height: 100vh;
+}
+
+
+
+
+.audio{
+  width: 300px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include bp-s{
+
+      margin-left: 40px;
+      margin-right: auto;
+      width: 350px;
+
+  }
+
+  @include bp-m{
+
+      margin-left: auto;
+      margin-right: 0;
+      width: 350px;
+
+  }
+
+
+}
+
+.record__audio__wrapper{
+
+
+
+
+
+
+    width: 100%;
+
+
+
+    @include bp-m{
+    width: 400px;
+    height: 400px;
+    right:0;
+    position: absolute;
+    top:0;
+
+    margin-right:60px;
+    }
+
+
+
+        @include bp-l{
+        width: 460px;
+        height: 460px;
+
+        }
+
+        @include bp-l{
+        width: 560px;
+        height: 560px;
+
+        }
+
+
+}
+
+
+.record__cover{
+  background: url(../img/record.jpg) no-repeat center;
+  background-size: cover;
+
+  width: 300px;
+  height: 300px;
+  margin: auto;
+
+  @include bp-s{
+
+     margin-left: 40px;
+     margin-right: auto;
+     width: 350px;
+     height: 350px;
+     margin-top: 50px;
+  }
+
+  @include bp-m{
+
+      margin-left: auto;
+      margin-right: 0;
+
+    margin-top: 0;
+
+  }
+
+  @include bp-m{
+
+      margin-left: auto;
+      margin-right: 0;
+      width: 500px;
+      height: 500px;
+    margin-top: 0;
+
+  }
+
+}
+.record__bar{
+    margin-left:-40px;
+
+    @include bp-sm{
+            margin-left:0;
     }
 
 }

@@ -2,6 +2,67 @@
 $(document).ready(function() {
 
 
+    // spy nav
+
+    var $main = $('.main');
+    var mainTop = $main.offset().top;
+    var mainBottom = mainTop + $main.height();
+    // console.log(main);
+    // console.log(zone);
+
+
+    $(window).scroll(function()
+    {
+        // console.log("test");
+        // console.log(zone);
+        // console.log(mainBottom);
+        // console.log(mainTop);
+        var zone= $('body, html').scrollTop();
+        if( zone > mainTop && zone < mainBottom)
+        {
+
+            $('.spyMenu').animate({
+      opacity: 1,
+
+
+
+
+    }, 400 );
+
+        }
+        else{
+
+            $('.spyMenu').animate({
+      opacity: 0,
+
+
+
+
+    }, 400 );
+
+
+
+        }
+
+
+    });
+
+    // for(var b=0; b<html.length; b++){
+    //     if(zone==main){
+    //         $('.spyMenu').css({
+    //             'display': 'flex',
+    //         });
+    //     }
+    //
+    // }
+
+
+
+
+
+
+
+
   window.onscroll=function(ev){
     easyReveal();
   };
@@ -31,6 +92,26 @@ $(document).ready(function() {
 
 
 
+            var easyItem5=  document.getElementsByClassName("easy5");
+
+
+               for(var a=0; a<easyItem5.length; a++){
+                   if(elementInViewport(easyItem5[a])){
+                     $(easyItem5[a]).animate({
+               width: 110 +"%",
+
+
+
+
+             }, 700 );
+            }
+
+
+            }
+
+
+
+
 
 
 
@@ -39,7 +120,7 @@ $(document).ready(function() {
 
        for(var z=0; z<easyItem4.length; z++){
            if(elementInViewport(easyItem4[z])){
-             $(easyItem3[y]).animate({
+             $(easyItem4[z]).animate({
                opacity: 1,
                bottom: 0
 
@@ -103,7 +184,7 @@ $(document).ready(function() {
 
 
    var easyItem=  document.getElementsByClassName("easy");
-   console.log(easyItem);
+   // console.log(easyItem);
 
       for(var i=0; i<easyItem.length; i++){
           if(elementInViewport(easyItem[i])){
@@ -140,7 +221,7 @@ $(document).ready(function() {
         $menu.css({
           background: 'rgba(0, 0, 0,'+number+')'
         });
-        console.log("done");
+        // console.log("done");
       });
 
 
