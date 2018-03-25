@@ -2,185 +2,86 @@
 $(document).ready(function() {
 
 
-    // spy nav
-
-    var $main = $('.main');
-    var mainTop = $main.offset().top;
-    var mainBottom = mainTop + $main.height();
-    // console.log(main);
-    // console.log(zone);
-
-
-    $(window).scroll(function()
+class EasyReveal
+{
+  constructor($targets, back)
+  {
+    this.$targets = $targets;
+    this.back = back;
+    this.list = [];
+    this.$window = $(window);
+    this.initList();
+    this.scrollInit();
+    this.once();
+  }
+  initList()
+  {
+    this.$targets.each((i, target)=>
     {
-        // console.log("test");
-        // console.log(zone);
-        // console.log(mainBottom);
-        // console.log(mainTop);
-        var zone= $('body, html').scrollTop();
-        if( zone > mainTop && zone < mainBottom)
-        {
-
-            $('.spyMenu').animate({
-      opacity: 1,
-
-
-
-
-    }, 400 );
-
-        }
-        else{
-
-            $('.spyMenu').animate({
-      opacity: 0,
-
-
-
-
-    }, 400 );
-
-
-
-        }
-
-
+      let $target = $(target);
+      let offset = $target.offset().top;
+      this.list.push({offset: offset, $target:$target});
     });
+  }
+  scrollInit()
+  {
+    this.$window.scroll(()=>
+    {
+      this.once();
+    });
+  }
+  once()
+  {
+    let scroll = this.$window.scrollTop() + this.$window.height() - 200;
+    this.list.forEach((element)=>
+    {
+      if(element.offset < scroll)
+      {
+        element.$target.addClass("easyRevealOn");
+      }
+      else if(this.back)
+      {
+        element.$target.removeClass("easyRevealOn");
+      }
+    });
+  }
+}
+let $body = $("body");
+if($body.data("easyreveal"))
+{
+  let $targets = $body.find('[class~="easyReveal"]');
+  let easyReveal = new EasyReveal($targets, $body.data("revealback"));
 
-    // for(var b=0; b<html.length; b++){
-    //     if(zone==main){
-    //         $('.spyMenu').css({
-    //             'display': 'flex',
-    //         });
-    //     }
-    //
-    // }
 
 
 
 
+}
 
 
+window.onscroll=function(ev){
+  easyReveal2();
+};
+  function easyReveal2(){
+function elementInViewport(el) {
+  var top = el.offsetTop;
+  var left = el.offsetLeft;
+  var width = el.offsetWidth;
+  var height = el.offsetHeight;
 
-
-  window.onscroll=function(ev){
-    easyReveal();
-  };
-
-  function elementInViewport(el) {
-    var top = el.offsetTop;
-    var left = el.offsetLeft;
-    var width = el.offsetWidth;
-    var height = el.offsetHeight;
-
-    while(el.offsetParent) {
-      el = el.offsetParent;
-      top += el.offsetTop;
-      left += el.offsetLeft;
-    }
-
-    return (
-      top >= window.pageYOffset &&
-      left >= window.pageXOffset &&
-      (top + height) <= (window.pageYOffset + window.innerHeight) &&
-      (left + width) <= (window.pageXOffset + window.innerWidth)
-    );
+  while(el.offsetParent) {
+    el = el.offsetParent;
+    top += el.offsetTop;
+    left += el.offsetLeft;
   }
 
-
-  function easyReveal(){
-
-
-
-            var easyItem5=  document.getElementsByClassName("easy5");
-
-
-               for(var a=0; a<easyItem5.length; a++){
-                   if(elementInViewport(easyItem5[a])){
-                     $(easyItem5[a]).animate({
-               width: 110 +"%",
-
-
-
-
-             }, 700 );
-            }
-
-
-            }
-
-
-
-
-
-
-
-    var easyItem4=  document.getElementsByClassName("easy4");
-
-
-       for(var z=0; z<easyItem4.length; z++){
-           if(elementInViewport(easyItem4[z])){
-             $(easyItem4[z]).animate({
-               opacity: 1,
-               bottom: 0
-
-
-
-
-     }, 400 );
-    }
-
-
-    }
-
-
-
-
-
-
-
-        var easyItem3=  document.getElementsByClassName("easy3");
-
-
-           for(var y=0; y<easyItem3.length; y++){
-               if(elementInViewport(easyItem3[y])){
-                 $(easyItem3[y]).animate({
-           width: 100 +"%",
-
-
-
-
-         }, 600 );
-        }
-
-
-        }
-
-
-
-
-    var easyItem2=  document.getElementsByClassName("easy2");
-
-
-       for(var x=0; x<easyItem2.length; x++){
-           if(elementInViewport(easyItem2[x])){
-             $(easyItem2[x]).animate({
-       opacity: 1,
-       bottom: 0
-
-
-
-     }, 400 );
-    }
-
-
-    }
-
-
-
-
-
-
+  return (
+    top >= window.pageYOffset &&
+    left >= window.pageXOffset &&
+    (top + height) <= (window.pageYOffset + window.innerHeight) &&
+    (left + width) <= (window.pageXOffset + window.innerWidth)
+  );
+}
 
 
    var easyItem=  document.getElementsByClassName("easy");
@@ -199,9 +100,22 @@ $(document).ready(function() {
   }
 
 
-  }
+}
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -235,22 +149,38 @@ $('.burger').on("click", function(){
       $('.burger__dash--two').removeClass('burger__dash--two--active');
         $('.burger__dash--three').removeClass('burger__dash--three--active');
         $('.burger__dash--one').removeClass('burger__dash--one--active');
-    $('.mobileMenu__wrapper').animate({
-      top:-1500
+    $('.mobileMenu__wrapper').css({
+      left:-1500
     });
   }else{
       $('.burger__dash--two').addClass('burger__dash--two--active');
         $('.burger__dash--three').addClass('burger__dash--three--active');
         $('.burger__dash--one').addClass('burger__dash--one--active');
 
-    $('.mobileMenu__wrapper').animate({
-      top:-2
+    $('.mobileMenu__wrapper').css({
+      left:0
     });
 
   }
   clicked=!clicked;
 });
 
+$(window).scroll(function()
+{
+
+
+    $('.burger__dash--two').removeClass('burger__dash--two--active');
+      $('.burger__dash--three').removeClass('burger__dash--three--active');
+      $('.burger__dash--one').removeClass('burger__dash--one--active');
+
+   $('.mobileMenu__wrapper').css({
+    left:-1500
+   });
+
+
+
+
+});
 
 
 var mySwiper = new Swiper ('.swiper-container', {
@@ -269,4 +199,9 @@ var mySwiper = new Swiper ('.swiper-container', {
 
 
   });
+
+
+
+
+
 });

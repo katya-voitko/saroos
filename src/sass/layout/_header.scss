@@ -71,11 +71,13 @@ padding:0 7px;
     border: 0;
     color: #000;
     font-family: 'Oswald', sans-serif;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     font-size: 1rem;
 
+
     width: 100%;
-    opacity: 1;
+
+
 }
 
 .sign__btn--white {
@@ -96,26 +98,34 @@ padding:0 7px;
 header{
     height: 100vh;
     width: 100%;
-        background-attachment: fixed;
+
 }
 .mobile__header{
  height: 100%;
  background:url(../img/mobile_hero.png) top no-repeat;
  background-size: cover;
  width: 100%;
+     background-attachment: fixed;
 
  @include bp-m{
      display: none;
  }
+
+ .title{
+     color: #fff;
+     letter-spacing: 7px;
+     font-size: 2rem;
+     font-weight: 200;
+     padding-left:7%;
+     padding-top: 20%;
+
+     @include bp-xs{
+         font-size: 3rem;
+     }
+ }
 }
 
-.mobile__header--topPannel{
-    height: 50px;
-    background-image:url(../img/asfalt-dark.png);
-    background-repeat: repeat;
-    background-color: $dust;
 
-}
 
 
 
@@ -128,9 +138,10 @@ header{
   background: none;
   z-index: 300;
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   right:20px;
   top:10px;
+z-index: 900;
 
 
   transition: .2s all ease-in-out;
@@ -197,16 +208,21 @@ header{
     height: 100%;
     background-image:url(../img/asfalt-dark.png);
     background-repeat: repeat;
-    position: relative;
-    top:-1500px;
+    position: fixed;
+    left:-1500px;
+    top:0;
+    z-index: 800;
+ @include transition;
 
 
 }
 .mobileMenu{
+    margin-top: 20%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
     width: 100%;
+
 }
 
 .mobileMenu__item{
@@ -271,8 +287,19 @@ padding: 0 5px;
     letter-spacing: 0.5px;
     font-size: 0.8rem;
     padding-right:15px;
+    padding-left: 5px;
+    padding-bottom: 3px;
     width: 100%;
     opacity: 1;
+
+    &::placeholder{
+        color: #fff!important;
+    }
+
+    &:focus {
+    outline: #000;
+
+}
 }
 
 .sign__btn {
@@ -325,7 +352,44 @@ padding: 0 5px;
 
 // 💻 desctop header 💻
 
+.headings__wrapper{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items:center;
+    justify-content: center;
+    @include posa;
+    z-index: 900;
+}
+.title--desk{
+    color: transparentize(#fff, 0.12);
+    font-size: 9rem;
+    letter-spacing: 3rem;
+    font-weight: 200;
 
+    text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.8);
+    z-index: 700;
+
+
+
+        @include bp-l{
+            font-size: 10rem;
+            letter-spacing: 4rem;
+        }
+
+    @include bp-xxl{
+        font-size: 15rem;
+        letter-spacing: 5rem;
+    }
+}
+.name{
+    color: #fff;
+    letter-spacing: 25px;
+    font-size: 5rem;
+    text-align: right;
+    font-weight: 200;
+    display: none;
+
+}
 .opacity_change{
   background: rgba(0, 0, 0, 0);
   width: 100%;
@@ -371,15 +435,10 @@ padding: 0 5px;
     width: 100%;
     height: 70px;
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     align-items: center;
-    padding-top: 20px;
-    position: relative;
-    z-index: 700;
-    @include bp-xxl{
 
-        padding-top: 30px;
-    }
+
 
 }
 
@@ -390,9 +449,10 @@ padding: 0 5px;
 
     .socialLinks__header{
         color: #fff;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         display: block;
         margin-right: 20px;
+        text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.8);
 
     }
     .newsletter__wrapper--desktop{
